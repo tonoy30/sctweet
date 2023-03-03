@@ -1,0 +1,43 @@
+<h1>Sign Up</h1>
+
+<%= form_with model: @user, url: signup_path do |form| %>
+    <% if @user.errors.any? %>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <% @user.errors.full_messages.each do |message| %>
+                <strong>
+                    <%= message.inspect %>
+                </strong>
+            <% end %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <% end %>
+    <div class="col-sm-6">
+        <div class="card p-4">
+            <div class="mb-3 row">
+                <%= form.label :email %>
+                <div class="col-sm-12">
+                    <%= form.text_field :email, class: "form-control", placeholder: "name@example.com" %>
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <%= form.label :password %>
+                <div class="col-sm-12">
+                    <%= form.password_field :password, class: "form-control"%>
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <%= form.label :password_confirmation %>
+                <div class="col-sm-12">
+                    <%= form.password_field :password_confirmation, class: "form-control"%>
+                </div>
+            </div>
+            <div class="d-flex flex-row-reverse">
+                <%= form.submit "Sign Up", class: "btn btn-primary" %>
+            </div>
+        </div>
+    </div>
+
+<% end %>
+
